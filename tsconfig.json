@@ -54,7 +54,7 @@
   },
   "include": [
   "./build/**/*.tsx",
-  "./build/**/*.ts"
+  "./build/**/*.ts",
 ],
   "exclude": [
     "node_modules",
