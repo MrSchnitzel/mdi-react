@@ -14,21 +14,27 @@ for (let svgFile of svgFiles) {
   if (!path) continue;
 
   const fileContent =
-`import React from 'react';
+`import * as React from 'react';
 
-const ${name}Icon = ({ width = 24, height = 24, viewBox = '0 0 24 24', className, children, ...props }) => {
-  let classes = 'mdi-icon';
-  if (className) classes += \` \${className}\`;
+export interface Props {
+    className?: string;
+}
 
-  return (
-    <svg {...props} width={width} height={height} viewBox={viewBox} className={classes}>
-      <path d="${path}" />
-    </svg>
-  );
-};
+class ${name}Icon extends React.Component<Props, Object> {
+    render() {
+        let classes = 'mdi-icon';
+        let width = 24, height = 24, viewBox = '0 0 24 24';
+        if (this.props.className!=null) classes += this.props.className;
+        return (
+            <svg {...this.props} width={width} height={height} viewBox={viewBox} className={classes}>
+                <path d="${path}" />
+            </svg>
+        );
+    }
+}
 
 export default ${name}Icon;
 `;
 
-  fs.writeFileSync(`${__dirname}/../build/${name}Icon.js`, fileContent);
+  fs.writeFileSync(`${__dirname}/../build/${name}Icon.tsx`, fileContent);
 }
