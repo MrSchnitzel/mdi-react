@@ -2,12 +2,17 @@
 [Material Design Icons](https://materialdesignicons.com) for React packaged as single components
 
 ## Installation
-
+clone and in cloned folder:
 ```bash
-npm install mdi-react
-# or if you use Yarn
-yarn add mdi-react
+npm install
+npm run build
+cd publish
+sudo npm link
 ```
+in Application you want to use the icons:
+ ```bash
+ npm link mdi-react
+ ```
 
 *The version number of `mdi-react` is in sync with the original font.*
 
